@@ -1,0 +1,11 @@
+build/
+bin/
+*.out
+*.exe
+*.o
+
+.vscode/
+.idea/
+*.user
+
+graph_stream.csv
