@@ -87,7 +87,23 @@ std::vector<int> Graph::getVertices() const {
 
 std::size_t Graph::getEdgeCount() const { return edgeCount; }
 std::size_t Graph::getVertexCount() const { return adj.size(); }
-std::size_t Graph::getConnectedComponentsCount() const { return dsu.getComponentCount(); }
+std::size_t Graph::getConnectedComponentsCount() const {
+    std::unordered_set<int> seen;
+    std::size_t components = 0;
+    for (const auto& kv : adj) {
+        if (seen.count(kv.first)) continue;
+        components++;
+        std::queue<int> q;
+        q.push(kv.first);
+        seen.insert(kv.first);
+        while (!q.empty()) {
+            int u = q.front(); q.pop();
+            for (int v : adj.at(u))
+                if (seen.insert(v).second) q.push(v);
+        }
+    }
+    return components;
+}
 
 std::vector<std::pair<int, std::size_t>> Graph::getTopKNodes(std::size_t k) const {
     using DegreeNodePair = std::pair<std::size_t, int>;
