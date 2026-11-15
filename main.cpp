@@ -39,6 +39,7 @@ int main() {
 
     while (getline(stream, line)) {
         if (line.empty()) continue;
+        // \r for carraige return 
         if (!line.empty() && line.back() == '\r') line.pop_back();
 
         stringstream ss(line);
