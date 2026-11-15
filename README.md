@@ -4,13 +4,7 @@
 
 A stream of edges goes into a C++ graph engine. The engine summarises the graph, finds its most connected nodes, extracts the subgraph around them, and then runs a Markov chain Monte Carlo (MCMC) sampler that walks through **chordal graphs** (graphs with no induced cycle longer than 3). A web page shows every stage and lets you replay the chain step by step.
 
-[![Demo of the project](docs/images/06-stage4-mcmc.png)](docs/demo.mp4)
-
-<p align="center"><a href="docs/demo.mp4"><b>Watch the 37-second demo video</b></a> (or see the animated preview below)</p>
-
-![Animated preview of the interface](docs/demo.gif)
-
-You do not need to read the source code to understand the project. This page explains what each part does and shows the real output.
+https://github.com/user-attachments/assets/6d2eeb9e-4fbe-4cee-933c-3e92c0ca692a
 
 ---
 
