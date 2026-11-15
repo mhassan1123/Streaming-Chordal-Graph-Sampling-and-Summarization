@@ -90,11 +90,11 @@ A graph is chordal if it has a **perfect elimination ordering**: an order of the
 
 **Step 1: Maximum cardinality search.** Repeatedly visit the unvisited vertex that has the most already-visited neighbours. The reverse of the visit order is the candidate elimination ordering.
 
-![Maximum cardinality search](docs/images/code-mcs.png)
+<img width="1350" height="1205" alt="code-mcs" src="https://github.com/user-attachments/assets/88fb8aff-eff8-40fd-a940-e9a0367e04b5" />
 
 **Step 2: Verify the ordering.** For every vertex, the neighbours visited before it must form a clique. If any pair of them is not connected, the graph is not chordal.
 
-![Chordality test](docs/images/code-ischordal.png)
+<img width="1350" height="1205" alt="code-ischordal" src="https://github.com/user-attachments/assets/7f7245a7-9e16-4002-a319-12f1c84d56b6" />
 
 **Maximum clique size.** In a chordal graph, the largest clique equals the largest "earlier neighbours + 1" over all vertices, so it can be read straight from the same ordering. This is exact for chordal graphs. For other graphs it is only an estimate, which is why the page marks it with `≈`.
 
@@ -108,21 +108,21 @@ The chain keeps a current graph and repeats the following for every iteration:
 
 Because every accepted state is chordal, the chain only ever visits chordal graphs.
 
-![MCMC loop](docs/images/code-sampler.png)
+<img width="1350" height="1322" alt="code-sampler" src="https://github.com/user-attachments/assets/197d5cb3-fcc8-425b-862e-6e559bd99471" />
 
 ## 5. How the web page talks to the C++ code
 
 **The browser** sends the edge list and parameters to the server:
 
-![Browser request](docs/images/code-frontend.png)
+<img width="1350" height="533" alt="code-frontend" src="https://github.com/user-attachments/assets/bea1d092-c9e9-4438-a950-3c15615ce03f" />
 
 **The server** validates them, starts the C++ program, writes the edges to its standard input, and collects the JSON it prints:
 
-![Server bridge](docs/images/code-server.png)
+<img width="1350" height="591" alt="code-server" src="https://github.com/user-attachments/assets/e84e009c-885b-48bb-9798-d13ecaf4c8c7" />
 
 **The engine** reads the edges, calls the same classes used by the console program, and prints the result:
 
-![Engine](docs/images/code-engine.png)
+<img width="1350" height="444" alt="code-engine" src="https://github.com/user-attachments/assets/9b370c32-1640-4f6a-98df-56e8af82049d" />
 
 ### API
 `POST /api/analyze`
