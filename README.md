@@ -55,32 +55,33 @@ The page follows the same five stages as the console program (`main.cpp`).
 ### Input panel
 Paste edges as `u,v` pairs or upload a CSV. Choose how many top nodes to extract, how many MCMC iterations to run, how often to record the chain, and a random seed. The same seed and input always give the same chain.
 
-![Input panel](docs/images/02-input-panel.png)
+<img width="380" height="700" alt="02-input-panel" src="https://github.com/user-attachments/assets/beca6c7f-c42e-4903-85b0-d944a22cb987" />
 
 ### Stage 1: Stream ingestion and summary
 Edges are loaded into the C++ `Graph`. The page shows node and edge counts, average degree, density, connected components, the maximum clique size, and whether the whole graph is chordal. Node size shows degree and the amber rings mark the top-K nodes. Hover any node for its degree and PageRank.
 
-![Stage 1](docs/images/03-stage1-stream.png)
+<img width="996" height="706" alt="03-stage1-stream" src="https://github.com/user-attachments/assets/66c25639-fead-4a9e-808e-e4a59f6d8020" />
 
 ### Stage 2: Feature and component extraction
 The top-K nodes by degree (these feed the next stage), the highest PageRank scores as a second view of importance, and the connected components.
 
-![Stage 2](docs/images/04-stage2-features.png)
+<img width="996" height="585" alt="04-stage2-features" src="https://github.com/user-attachments/assets/a1b31969-d52d-4fd1-8ac9-716995c108ef" />
 
 ### Stage 3: Induced subgraph for chordal analysis
 The subgraph keeps the top-K nodes and every edge between them. The page reports whether it is chordal. If it is not, a warning explains that the chain starts outside the chordal set.
 
-![Stage 3](docs/images/05-stage3-subgraph.png)
+<img width="996" height="514" alt="05-stage3-subgraph" src="https://github.com/user-attachments/assets/a034ab62-fe47-46dd-87c5-995c75015b9a" />
 
 ### Stage 4: MCMC walk over chordal graphs
 This is the main view. Each recorded step of the chain can be shown on the graph. **Green** edges were added since the previous record and **red dashed** edges were removed. Use the slider or Play button to move through time, or click any chart to jump to that point. The four charts track edges, density, average degree and maximum clique size. The bar at the bottom shows how many proposals were accepted, rejected or could not be applied.
 
-![Stage 4](docs/images/06-stage4-mcmc.png)
+<img width="996" height="1177" alt="06-stage4-mcmc" src="https://github.com/user-attachments/assets/8a2edd83-a845-45c5-9784-751f29b1f0c1" /><img width="996" height="419" alt="07-stage5-comparison" src="https://github.com/user-attachments/assets/8656b695-c6b1-4784-ab38-cae6a708f2e2" />
+
 
 ### Stage 5: Structural comparison
 The raw stream, the extracted subgraph and the final state of the chain side by side. A `≈` before a clique size means the graph is not chordal, so the value is only an estimate (see [section 4](#4-the-key-algorithms)).
 
-![Stage 5](docs/images/07-stage5-comparison.png)
+<img width="996" height="419" alt="07-stage5-comparison" src="https://github.com/user-attachments/assets/6879d592-5e2e-400a-8ed5-a62e9cfa0290" />
 
 ## 4. The key algorithms
 
