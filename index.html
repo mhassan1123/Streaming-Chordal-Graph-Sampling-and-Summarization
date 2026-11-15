@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chordal Graph Explorer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Chordal graph explorer</h1>
+    <p>Stream edges into a C++ engine, pull out the highest-degree subgraph, then watch an MCMC chain walk through chordal graphs.</p>
+  </div>
+  <div id="status" class="status" role="status"><span class="dot"></span><span id="statusText">Connecting to server…</span></div>
+</header>
+
+<div class="layout">
+  <aside class="rail" aria-label="Input and parameters">
+    <section>
+      <label for="edges" class="field-title">Edge stream</label>
+      <textarea id="edges" rows="11" spellcheck="false" aria-describedby="edgesHelp"></textarea>
+      <p id="edgesHelp" class="help">One edge per line as <code>u,v</code> (non-negative integers).</p>
+      <div class="row">
+        <button type="button" class="ghost" id="loadExample">Paper example</button>
+        <button type="button" class="ghost" id="loadClustered">60-node clustered</button>
+        <label class="ghost file">Upload CSV<input type="file" id="file" accept=".csv,.txt,text/plain,text/csv" hidden></label>
+      </div>
+    </section>
+    <section class="params">
+      <div class="field"><label for="topK">Top-K nodes by degree</label><input id="topK" type="number" min="2" max="25" value="5"></div>
+      <div class="field"><label for="iterations">MCMC iterations</label><input id="iterations" type="number" min="0" max="5000" value="300"></div>
+      <div class="field"><label for="logInterval">Record every</label><input id="logInterval" type="number" min="1" max="5000" value="10"></div>
+      <div class="field"><label for="seed">Random seed</label><div class="seed"><input id="seed" type="number" min="0" value="1"><button type="button" class="ghost" id="newSeed">New</button></div></div>
+    </section>
+    <button type="button" class="run" id="run">Run analysis</button>
+    <p id="error" class="error" role="alert" hidden></p>
+    <p class="help foot">The same seed and input always give the same chain.</p>
+  </aside>
+
+  <main id="out" aria-live="polite">
+    <div class="empty">
+      <h2>Run an analysis to see results</h2>
+      <p>Load the example from the paper or paste your own edge list, then choose <strong>Run analysis</strong>. Results appear here, one section per stage of the pipeline.</p>
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
